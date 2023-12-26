@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layouts/main-layout::main-fragment(
+ ~{::title},~{::#home-nav},~{::#home-main-content} ,~{::#home-footer}  , ~{}) }">
+<head>
+    <meta charset="UTF-8">
+    <title>infor-user</title>
+</head>
+<body>
+<div id="home-nav" th:replace="~{fragments/app-fragments::nav-default}">nav</div>
+<div id="home-main-content">
+    'user-infor'
+    <div th:if="${user}">
+<!--        name , email , password , role -->
+        <span th:utext="${user.username}"></span>
+        <br/>
+        <span th:utext="${user.email}"></span>
+        <br/>
+        <span th:utext="${user.password}"></span>
+    </div>
+    <div>
+        <a th:href="@{/j_spring_security_logout}">Logout</a>
+    </div>
+</div>
+<div id="home-footer" th:replace="~{fragments/app-fragments::footer-default}">footer</div>
+</body>
+</html>

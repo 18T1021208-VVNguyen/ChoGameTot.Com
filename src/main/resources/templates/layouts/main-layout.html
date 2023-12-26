@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:fragment="main-fragment (title , nav, mainContent, footer , otherStaticResources)">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="${title}">No Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap_5/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <th:block th:replace="${otherStaticResources}">
+    </th:block>
+</head>
+<body>
+<div class="container">
+    <nav th:insert="${nav} ?: ~{}">
+        <ul>
+            <li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>
+        </ul>
+    </nav>
+    <div th:insert="${mainContent} ?: ~{}">
+        <h1>Page 1</h1>
+        <p>Main content of Page 1</p>
+    </div>
+<footer th:insert="${footer} ?: ~{}">
+    <p>Footer</p>
+</footer>
+</div>
+</body>
+</html>
