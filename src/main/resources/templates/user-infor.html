@@ -12,11 +12,17 @@
     'user-infor'
     <div th:if="${user}">
 <!--        name , email , password , role -->
+        <span>userName: </span>
         <span th:utext="${user.username}"></span>
         <br/>
+        <span>email: </span>
         <span th:utext="${user.email}"></span>
         <br/>
+        <span>password: </span>
         <span th:utext="${user.password}"></span>
+        <br/>
+        <span>ID: </span>
+        <span th:utext="${user.id}"></span>
     </div>
     <div>
         <a th:href="@{/j_spring_security_logout}">Logout</a>

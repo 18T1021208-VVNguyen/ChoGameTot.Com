@@ -2,7 +2,7 @@ package com.example.startappdemo.security;
 
 
 import com.example.startappdemo.security.jwt.CustomAccessDeniedHandler;
-import com.example.startappdemo.security.jwt.TrackingUserFilter;
+//import com.example.startappdemo.security.jwt.TrackingUserFilter;
 import com.example.startappdemo.security.service.impl.UserDetailsServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -42,10 +42,10 @@ public class WebSecurityConfig {
         return authProvider;
     }
 
-    @Bean
-    TrackingUserFilter authenticationJwtTokenFilter() {
-        return new TrackingUserFilter();
-    }
+//    @Bean
+//    TrackingUserFilter authenticationJwtTokenFilter() {
+//        return new TrackingUserFilter();
+//    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -78,7 +78,7 @@ public class WebSecurityConfig {
         );
 
         http.authenticationProvider(authenticationProvider());
-        http.addFilterAfter( authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+//        http.addFilterAfter( authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
 
         return http.build();

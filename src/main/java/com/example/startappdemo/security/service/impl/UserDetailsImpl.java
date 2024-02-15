@@ -21,7 +21,9 @@ public class UserDetailsImpl  implements UserDetails {
 
     @Getter
     private String email;
-    private String username;
+
+
+    private String userName;
 
 
     @JsonIgnore
@@ -32,7 +34,7 @@ public class UserDetailsImpl  implements UserDetails {
     public UserDetailsImpl(Long id, String username, String email, String password,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
-        this.username = username;
+        this.userName = username;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
@@ -67,7 +69,7 @@ public class UserDetailsImpl  implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return userName;
     }
 
 
@@ -100,7 +102,7 @@ public class UserDetailsImpl  implements UserDetails {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof UserDetailsImpl) {
-            return username.equals( ((UserDetailsImpl) obj).getUsername() );
+            return userName.equals( ((UserDetailsImpl) obj).getUsername() );
         }
         return false;
     }

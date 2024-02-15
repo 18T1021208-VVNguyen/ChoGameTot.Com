@@ -13,19 +13,22 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "User_Log_Time" )
-public class UserLogTimeEntity extends  BaseEntity{
+@Table(name = "User_Online" )
+public class UserOnlineEntity extends  BaseEntity{
 
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id" )
     private UserEntity user;
 
-    @Column( name = "ip_address", nullable = false)
-    private String ip;
+    @Column(name = "timeConnect")
+    private Date timeConnect;
 
-    @Column( name = "lasttime", nullable = false)
-    private Date lastTime;
+    @Column( name = "timeDisconnect")
+    private Date timeDisconnect;
+
+    @Column( name = "ip_address")
+    private String ip;
 
 
 }

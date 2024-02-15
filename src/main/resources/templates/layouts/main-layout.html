@@ -7,6 +7,9 @@
     <title th:replace="${title}">No Title</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap_5/bootstrap.min.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <!-- https://cdnjs.com/libraries/stomp.js/ -->
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <th:block th:replace="${otherStaticResources}">
     </th:block>
 </head>
@@ -25,6 +28,8 @@
 <footer th:insert="${footer} ?: ~{}">
     <p>Footer</p>
 </footer>
+
 </div>
 </body>
+<script th:src="@{/js/global.js}"></script>
 </html>

@@ -19,6 +19,7 @@ public class HomeController {
     @GetMapping("/user-infor")
     public  String userInfor( Principal principal , Model model){
         UserDetailsImpl u =  (UserDetailsImpl) ((Authentication) principal).getPrincipal();
+
        model.addAttribute("user",u);
         return "user-infor";
     }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{layouts/main-layout::main-fragment(
+ ~{::title},~{::#home-nav},~{::#container} ,~{::#home-footer} , ~{::#home-static-resources} ) }">
+<head>
+
+    <title>Spring Boot WebSocket</title>
+    <th:block id="home-static-resources">
+        <link rel="stylesheet" th:href="@{/css/style/chat_rom.css}" />
+        <!-- https://cdnjs.com/libraries/sockjs-client -->
+<!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>-->
+<!--        &lt;!&ndash; https://cdnjs.com/libraries/stomp.js/ &ndash;&gt;-->
+<!--        <script  src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>-->
+
+    </th:block>
+
+</head>
+<body>
+<div id="home-nav" th:replace="~{fragments/app-fragments::nav-default}">nav</div>
+<div id="container"  class="row" style="width: 60%; margin: 0 auto">
+
+    <div class="col-sm-4">
+        <div class="text-center border border-1 " style="margin-top: 30px ;"  >
+            <h6> User Online</h6>
+            <ul style="list-style: none ;text-align: left" id="useOn" >
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-sm-8">
+        <div id="chat-container">
+
+                <div class="chat-header">
+                    <div class="user-container">
+                        <span id="username" th:utext="${user.username}"></span>
+                    </div>
+                    <h3>Spring WebSocket Chat Demo</h3>
+                </div>
+
+                <hr/>
+
+                <div id="connecting">Connecting...</div>
+                <ul id="messageArea">
+                </ul>
+                <form id="messageForm" name="messageForm">
+                    <div class="input-message">
+                        <input type="text" id="message" autocomplete="off"
+                               placeholder="Type a message..."/>
+                        <button type="submit">Send</button>
+                    </div>
+                </form>
+
+                <script th:src="@{/js/main.js}"></script>
+            </div>
+        </div>
+</div>
+
+<div id="home-footer" th:replace="~{fragments/app-fragments::footer-default}">footer</div>
+
+</body>
+</html>

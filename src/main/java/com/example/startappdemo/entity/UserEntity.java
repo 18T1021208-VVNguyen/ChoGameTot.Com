@@ -1,5 +1,6 @@
 package com.example.startappdemo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
@@ -40,6 +41,7 @@ public class UserEntity extends  BaseEntity {
     private  String password;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @JsonIgnore
     private Set<UserRoleEntity> roleUser = new HashSet<>();
 
 
