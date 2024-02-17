@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+<header th:fragment="header-default">
+  <div class="header-nav">
+    <!--                row 1-->
+    <div class="row align-items-center ">
+      <div class="col-8 text-center mt-3 mb-2">
+        <ul class="header-row1-btn " style="margin-left: 115px">
+          <li class=" my-2 header-btn">
+            <i class="fa-brands fa-facebook header-item-icon"></i>
+            <a class="text-decoration-none text-white" href="#">GroupFB</a>
+          </li>
+          <li class=" my-2 header-btn">
+            <i class="fa-brands fa-blogger header-item-icon"></i>
+            <a class="text-decoration-none text-white" href="#">Blog</a>
+          </li>
+          <li class=" my-2 header-btn">
+            <i class="fa-solid fa-book-open-reader header-item-icon"></i>
+            <a class="text-decoration-none text-white" href="#">Hướng Dẫn</a>
+          </li>
+        </ul>
+      </div>
+
+
+      <div class="col-4 text-center mt-3 mb-2">
+        <ul class="header-row1-btn">
+          <li class="my-2 header-btn" id="open-box-message">
+            <!--                                icon message and icon so luong tin-->
+            <div class="header-noti">
+              <i class="fa-solid fa-message header-item-icon"></i>
+              <div>20</div>
+            </div>
+
+            <div style="display: inline-block">
+              <a class="text-decoration-none text-white" href="#">Tin Nhắn</a>
+              <i class="fa-solid fa-caret-down header-item-icon" style="margin-left: -1px"></i>
+            </div>
+
+            <!--Chat message ==========================================-->
+            <div class="header-btn-box-message d-none">
+              <div class="box-message-hed">
+                <p>Đoạn Chát</p>
+                <div class="box-message-hed-option">
+                  <button class="btn btn-light" title="Xem tat ca doan chat">
+                    <i class="fa-solid fa-maximize"></i>
+                  </button>
+                  <button class="btn btn-light" title="Tao tin nhan moi">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+
+                </div>
+
+              </div>
+              <div class="box-message-search">
+                <input type="search" placeholder="Tim kiem" />
+              </div>
+
+              <div class="box-message-btn">
+                <button class="btn btn-primary">Hộp thư</button>
+                <button class="btn btn-light">Người lien he </button>
+              </div>
+              <!-- Box chat message -->
+              <div class="box-message-chat">
+                <div class="box-message-chat-item">
+                  <div class="avatar">
+                    <img th:src="@{/images/avatar/avatar1.jpg}">
+                    <i class="fa-solid fa-circle"></i>
+                  </div>
+                  <div class="chatbox">
+                    <span class="chatbox-name">Vo Nguyen</span>
+                    <div class="chatbox-body">
+                                                <span class="chatbox-main chatbox-main-no-read">bán nick koo mày
+                                                    hieeeeeeeeeeee, </span>
+                      <span class="chatbox-time">1h</span>
+                      <i class="fa-solid fa-circle"></i>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="box-message-chat-item">
+                  <div class="avatar">
+                    <img th:src="@{/images/avatar/avatar1.jpg}">
+                    <i class="fa-solid fa-circle"></i>
+                  </div>
+                  <div class="chatbox">
+                    <span class="chatbox-name">Vo Nguyen</span>
+                    <div class="chatbox-body">
+                      <span class="chatbox-main ">ban nick ko may thang</span>
+                      <span class="chatbox-time">1h</span>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="box-message-chat-item">
+                <div class="avatar">
+                  <img th:src="@{/images/avatar/avatar1.jpg}">
+                  <i class="fa-solid fa-circle"></i>
+                </div>
+                <div class="chatbox">
+                  <span class="chatbox-name">Vo Nguyen</span>
+                  <div class="chatbox-body">
+                                            <span class="chatbox-main chatbox-main-no-read">bán nick koo mày
+                                                hieeeeeeeeeeee, </span>
+                    <span class="chatbox-time">1h</span>
+                    <i class="fa-solid fa-circle"></i>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="box-message-chat-item">
+                <div class="avatar">
+                  <img th:src="@{/images/avatar/avatar1.jpg}">
+                  <i class="fa-solid fa-circle"></i>
+                </div>
+                <div class="chatbox">
+                  <span class="chatbox-name">Vo Nguyen</span>
+                  <div class="chatbox-body">
+                                            <span class="chatbox-main chatbox-main-no-read">bán nick koo mày
+                                                hieeeeeeeeeeee, </span>
+                    <span class="chatbox-time">1h</span>
+                    <i class="fa-solid fa-circle"></i>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="box-message-chat-item">
+                <div class="avatar">
+                  <img th:src="@{/images/avatar/avatar1.jpg}">
+                  <i class="fa-solid fa-circle"></i>
+                </div>
+                <div class="chatbox">
+                  <span class="chatbox-name">Vo Nguyen</span>
+                  <div class="chatbox-body">
+                                            <span class="chatbox-main chatbox-main-no-read">bán nick koo mày
+                                                hieeeeeeeeeeee, </span>
+                    <span class="chatbox-time">1h</span>
+                    <i class="fa-solid fa-circle"></i>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </li>
+          <li class=" my-2 header-btn">
+            <div class="header-noti">
+              <i class="fa-solid fa-bell header-item-icon"></i>
+              <div>20</div>
+            </div>
+
+            <a class="text-decoration-none text-white" href="#">Thông Báo</a>
+            <i class="fa-solid fa-caret-down header-item-icon" style="margin-left: -1px"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!--                row 2-->
+    <div class="row pb-3 align-items-center">
+      <div class="col-3 text-white ">
+        <div class=""><img class="header-logo" th:src="@{/images/logo/Good.jpg}" /> </div>
+      </div>
+
+      <div class="col-5">
+        <div>
+          <form class="col-lg-auto mb-2 mb-lg-0 me-lg-2 w-100">
+            <input type="search" class="form-control form-control-dark" placeholder="Search..."
+                   aria-label="Search">
+          </form>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <ul class="header-row2-btn">
+          <li class="my-2">
+            <i class="fa-solid fa-circle-plus header-item-icon"></i>
+            <a class="text-decoration-none text-white" href="#">Đăng Tin</a>
+          </li>
+          <li class="my-2 ">
+            <i class="fa-solid fa-layer-group header-item-icon"></i>
+            <a class="text-decoration-none text-white" href="#">Phòng Giao Dịch</a>
+          </li>
+          <li class="my-2">
+            <i class="fa-brands fa-github header-item-icon"></i>
+            <a class="text-decoration-none text-white" href="#">Tai Khoan</a>
+            <i class="fa-solid fa-caret-down header-item-icon" style="margin-left: -1px"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+</body>
+
+</html>

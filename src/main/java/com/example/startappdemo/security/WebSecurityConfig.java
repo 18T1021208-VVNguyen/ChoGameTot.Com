@@ -53,8 +53,8 @@ public class WebSecurityConfig {
         http.csrf(csrf -> csrf.disable());
 
         http.authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/css/**", "/js/**",
-                        "/index", "/auth/*" ).permitAll()
+                .requestMatchers("/", "/css/**", "/js/**", "/fontawesomefree_6.5.1web/**", "/jquery/**",
+                        "/images/**", "/index", "/auth/*" ).permitAll()
                 .requestMatchers("*/chat/", "/romgiaodich/", "/user-infor/")
                 .hasAuthority("ROLE_USER")
                 .requestMatchers("/admin/**")

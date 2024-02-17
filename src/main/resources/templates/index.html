@@ -1,130 +1,176 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
  th:replace="~{layouts/main-layout::main-fragment(
- ~{::title},~{::#home-nav},~{::#home-main-content} ,~{::#home-footer} , ~{} )  }">
+ ~{::title},~{::#home-nav},~{::#home-main-content} ,~{::#home-footer} , ~{::#home-static-resources} )  }">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" th:href="@{css/bootstrap_5/bootstrap.min.css}">
+    <th:block id="home-static-resources">
+        <link rel="stylesheet" th:href="@{/css/style/style.css}" />
+        <script th:src="@{/js/index.js}"> </script>
+    </th:block>
 </head>
 <body>
-<div class="container">
-    <div id="home-nav" th:replace="~{fragments/app-fragments::nav-default}">nav</div>
-    <section id="home-main-content" style="background-color: #eee;" >
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-                    <div class="card">
-                        <div class="d-flex justify-content-between p-3">
-                            <p class="lead mb-0">Today's Combo Offer</p>
-                            <div
-                                    class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-                                    style="width: 35px; height: 35px;">
-                                <p class="text-white mb-0 small">x4</p>
-                            </div>
-                        </div>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/4.webp"
-                             class="card-img-top" alt="Laptop" />
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
-                                <p class="small text-danger"><s>$1099</s></p>
-                            </div>
+<div class="container-fluid">
+    <!--        Hearder -->
+    <header id="home-nav" th:replace="~{fragments/header-fragments::header-default}">
 
-                            <div class="d-flex justify-content-between mb-3">
-                                <h5 class="mb-0">HP Notebook</h5>
-                                <h5 class="text-dark mb-0">$999</h5>
-                            </div>
+    </header>
 
-                            <div class="d-flex justify-content-between mb-2">
-                                <p class="text-muted mb-0">Available: <span class="fw-bold">6</span></p>
-                                <div class="ms-auto text-warning">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
+    <!--        Content-->
+    <div id="home-main-content" class="content" >
+        <!--            message detail -->
+        <div class="contai-box-message-detail">
+            <div class="box-message-detail d-none">
+                <div class="box-message-header">
+                    <div class="message-header-avatar">
+                        <img th:src="@{/images/avatar/avatar1.jpg}">
+                        <span>Nguyen Vo</span>
+                        <i class="fa-solid fa-caret-down" style="margin-left: -1px"></i>
+                    </div>
+                    <div class="message-header-action">
+                        <i class="fa-solid fa-xmark"></i>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-                    <div class="card">
-                        <div class="d-flex justify-content-between p-3">
-                            <p class="lead mb-0">Today's Combo Offer</p>
-                            <div
-                                    class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-                                    style="width: 35px; height: 35px;">
-                                <p class="text-white mb-0 small">x2</p>
-                            </div>
-                        </div>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/7.webp"
-                             class="card-img-top" alt="Laptop" />
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
-                                <p class="small text-danger"><s>$1199</s></p>
-                            </div>
-
-                            <div class="d-flex justify-content-between mb-3">
-                                <h5 class="mb-0">HP Envy</h5>
-                                <h5 class="text-dark mb-0">$1099</h5>
-                            </div>
-
-                            <div class="d-flex justify-content-between mb-2">
-                                <p class="text-muted mb-0">Available: <span class="fw-bold">7</span></p>
-                                <div class="ms-auto text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                            </div>
+                <div class="box-message-content-chat">
+                    <div class="chat-me">
+                            <span>Hello
+                                baneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebaneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebaneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+                    </div>
+                    <div class="chat-other">
+                        <img th:src="@{/images/avatar/avatar1.jpg}" class="d-none">
+                        <div>
+                                <span>Co viec jeeeeeeee ko
+                                    vovannguyenxxnguyennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+                                    e</span>
                         </div>
                     </div>
+
+                    <div class="chat-other">
+                        <img th:src="@{/images/avatar/avatar1.jpg}" class="">
+                        <div>
+                                <span>Co viec jeeeeeeee ko
+                                    vovannguyenxxnguyennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+                                    e</span>
+                        </div>
+                    </div>
+                    <div class="chat-other">
+                        <img th:src="@{/images/avatar/avatar1.jpg}" class="">
+                        <div>
+                                <span>Co viec jeeeeeeee ko
+                                    vovannguyenxxnguyennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+                                    e</span>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-                    <div class="card">
-                        <div class="d-flex justify-content-between p-3">
-                            <p class="lead mb-0">Today's Combo Offer</p>
-                            <div
-                                    class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
-                                    style="width: 35px; height: 35px;">
-                                <p class="text-white mb-0 small">x3</p>
-                            </div>
-                        </div>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/5.webp"
-                             class="card-img-top" alt="Gaming Laptop" />
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <p class="small"><a href="#!" class="text-muted">Laptops</a></p>
-                                <p class="small text-danger"><s>$1399</s></p>
-                            </div>
 
-                            <div class="d-flex justify-content-between mb-3">
-                                <h5 class="mb-0">Toshiba B77</h5>
-                                <h5 class="text-dark mb-0">$1299</h5>
-                            </div>
-
-                            <div class="d-flex justify-content-between mb-2">
-                                <p class="text-muted mb-0">Available: <span class="fw-bold">5</span></p>
-                                <div class="ms-auto text-warning">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                            </div>
+                <div class="box-message-input-chat">
+                    <div class="nav-chat">
+                        <button class="btn-attach">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="input-chat">
+                                <textarea id="" value="" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="6"
+                                          rows="1"> </textarea>
                         </div>
+                        <button class="btn-send">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="box-message-detail d-none">
+                <div class="box-message-header">
+                    <div class="message-header-avatar">
+                        <img th:src="@{/images/avatar/avatar1.jpg}">
+                        <span>Nguyen Vo 2</span>
+                        <i class="fa-solid fa-caret-down" style="margin-left: -1px"></i>
+                    </div>
+                    <div class="message-header-action">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+                <div class="box-message-content-chat">
+                    <div class="chat-me">
+                            <span>Hello
+                                baneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebaneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeebaneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</span>
+                    </div>
+                    <div class="chat-other">
+                        <img th:src="@{/images/avatar/avatar1.jpg}" class="d-none">
+                        <div>
+                                <span>Co viec jeeeeeeee ko
+                                    vovannguyenxxnguyennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+                                    e</span>
+                        </div>
+                    </div>
+
+                    <div class="chat-other">
+                        <img th:src="@{/images/avatar/avatar1.jpg}" class="">
+                        <div>
+                                <span>Co viec jeeeeeeee ko
+                                    vovannguyenxxnguyennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+                                    e</span>
+                        </div>
+                    </div>
+                    <div class="chat-other">
+                        <img th:src="@{/images/avatar/avatar1.jpg}" class="">
+                        <div>
+                                <span>Co viec jeeeeeeee ko
+                                    vovannguyenxxnguyennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
+                                    e</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="box-message-input-chat">
+                    <div class="nav-chat">
+                        <button class="btn-attach">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <div class="input-chat">
+                                <textarea id="textarea" value="" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="6"
+                                          rows="1"> </textarea>
+                        </div>
+                        <button class="btn-send">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <div id="home-footer" th:replace="~{fragments/app-fragments::footer-default}">footer</div>
+
+        <!--            ==============================-->
+        <!--            QuangCao-->
+        <div class="content-ad">
+            <div class="pre">
+                <i class="fa-solid fa-less-than"></i>
+            </div>
+            <div>
+                <img  th:src="@{/images/ads/anhChoTo2.png}">
+            </div>
+            <div class="dot">
+                <ul>
+                    <li><i class="fa-solid fa-circle"></i></li>
+                    <li><i class="fa-solid fa-circle"></i></li>
+                    <li><i class="fa-solid fa-circle"></i></li>
+                    <li><i class="fa-solid fa-circle"></i></li>
+                    <li><i class="fa-solid fa-circle"></i></li>
+                </ul>
+
+            </div>
+            <div class="next">
+                <i class="fa-solid fa-greater-than"></i>
+            </div>
+
+        </div>
+    </div>
+
+    <!--        Footer-->
+    <footer id="home-footer" th:replace="~{fragments/footer-fragments::footer-default}">
+    </footer>
 </div>
 </body>
+
 </html>
