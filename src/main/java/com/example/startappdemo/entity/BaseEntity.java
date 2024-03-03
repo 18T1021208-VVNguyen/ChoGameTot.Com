@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 
@@ -20,11 +21,11 @@ public abstract class  BaseEntity  {
 
 
     @Column(name = "created_at" )
-    protected Date createdAt;
+    protected Timestamp createdAt;
 
 
     @Column(name = "updated_at" )
-    protected Date updatedAt;
+    protected Timestamp updatedAt;
 
 
 

@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
  th:replace="~{layouts/main-layout::main-fragment(
- ~{::title},~{::#home-nav},~{::#home-main-content} ,~{::#home-footer} , ~{::#home-static-resources} )  }">
+ ~{::title},~{::#home-nav},~{::#home-main-content} ,~{::#home-footer} , ~{} )  }">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <th:block id="home-static-resources">
-        <link rel="stylesheet" th:href="@{/css/style/style.css}" />
-        <script th:src="@{/js/index.js}"> </script>
-    </th:block>
+
 </head>
 <body>
 <div class="container-fluid">

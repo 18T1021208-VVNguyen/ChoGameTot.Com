@@ -313,7 +313,7 @@ p{
 
 }
 
-/*===============================================*/
+/* box container message  ===============================================*/
 .contai-box-message-detail{
     display: flex;
     position: fixed;
@@ -349,6 +349,7 @@ p{
 
 .header-row2-btn > li{
     cursor: pointer;
+    position: relative;
 }
 
 .header-item-icon{
@@ -444,3 +445,53 @@ p{
     background-color: #B22222;
 }
 
+/*box account ==============================================*/
+.box-account{
+    position: absolute;
+    width: 320px;
+    background-color: #FFEFD5;
+    right: 0px;
+    padding: 10px;
+    border-radius: 20px;
+    z-index: 1;
+
+}
+.box-account > .account-profile{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+
+}
+.profile-img{
+    position: relative;
+}
+.profile-img > i {
+    position: absolute;
+    bottom: 0px;
+    right: -5px;
+    top: 32px;
+    font-size: 16px;
+    color: black;
+    background-color: white;
+    width: 17px;
+    height: 17px;
+
+    text-align: center;
+}
+.profile-img   img{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-flows{
+    display: flex;
+}
+.common-item{
+    margin-bottom: 10px;
+}
+.nap-rut{
+    display: flex;
+    gap: 10px;
+}

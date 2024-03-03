@@ -6,10 +6,13 @@
     <meta charset="UTF-8">
     <title th:replace="${title}">No Title</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap_5.3.2/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style/style.css}" />
     <link rel="stylesheet" th:href="@{/fontawesomefree_6.5.1web/css/all.min.css}">
+
     <!-- https://cdnjs.com/libraries/stomp.js/ -->
     <script  src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script th:src="@{/jquery/jquery-3.7.1.min.js}"> </script>
+    <script th:src="@{/js/index.js}"> </script>
 
     <th:block th:replace="${otherStaticResources}">
     </th:block>

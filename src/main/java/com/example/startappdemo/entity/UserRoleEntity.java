@@ -29,8 +29,4 @@ public class UserRoleEntity  extends  BaseEntity{
     private RoleEntity role;
 
 
-//    @Transactional
-//    public RoleEntity getRole(){
-//        return this.role;
-//    }
 }

@@ -7,7 +7,7 @@
     <title>register</title>
 </head>
 <body>
-<div id="home-nav" th:replace="~{fragments/app-fragments::nav-default}">nav</div>
+<div id="home-nav" th:replace="~{fragments/header-fragments::header-default}">nav</div>
 <div id="home-main-content"
      class="row bg-light justify-content-center rounded py-4 mt-4 border border-primary rounded ">
     <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -94,7 +94,7 @@
                         <div class="col-md-12 control">
                             <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
                                 <!-- 1 login , 2 register -->
-                                <b> <a class="" href="#" th:href="@{/login}" id="btn-sign-i-u"> Login Here </a> </b>
+                                 <a class="" href="#" th:href="@{/auth/login}" id="btn-sign-i-u"> Login Here </a>
                             </div>
                         </div>
                     </div>
@@ -103,6 +103,6 @@
         </div>
     </div>
 </div>
-<div id="home-footer" th:replace="~{fragments/app-fragments::footer-default}">footer</div>
+<div id="home-footer" th:replace="~{fragments/footer-fragments::footer-default}">footer</div>
 </body>
 </html>

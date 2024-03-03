@@ -1,17 +1,14 @@
 package com.example.startappdemo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.UniqueElements;
 
+import java.sql.Timestamp;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
@@ -40,9 +37,28 @@ public class UserEntity extends  BaseEntity {
     @Column(name = "password" )
     private  String password;
 
+    @Column(name = "birth_day" )
+    private Timestamp birthDay;
+
+    @Column(name = "avatar" )
+    private String avatar;
+
+    @Column(name = "address" )
+    private String address;
+
+//    so tien can lai
+    @Column(name = "balance")
+    private Float balance;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     @JsonIgnore
     private Set<UserRoleEntity> roleUser = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userReceiver")
+    private Set<SenderReceiverEntity> userReceiver = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userSender")
+    private Set<SenderReceiverEntity> userSender = new HashSet<>();
 
 
 

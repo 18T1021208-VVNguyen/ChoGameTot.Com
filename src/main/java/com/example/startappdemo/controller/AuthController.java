@@ -32,13 +32,17 @@ public class AuthController {
                 HttpSession session =  request.getSession(false);
                 if(session != null){
                     String messError =  ((Exception) session.getAttribute("SPRING_SECURITY_LAST_EXCEPTION")).getMessage();
-                    model.addAttribute("messError",messError + "/\n thong tin tk ko chinh xac");
+                    model.addAttribute("message",messError + "/\n thong tin tk ko chinh xac");
                 }
 
             }
 
             if(request.getParameter("message").equals("required_login")){
-                model.addAttribute("messError",  " TRang này yêu cầu phải login");
+                model.addAttribute("message",  " TRang này yêu cầu phải login");
+            }
+
+            if(request.getParameter("message").equals("register_success")){
+                model.addAttribute("message","Dang ki thanh Cong , Ban Co The Login");
             }
 
         }
@@ -62,8 +66,8 @@ public class AuthController {
             return "register";
         }
         userService.saveUser(request);
-        model.addAttribute("status" , "Dang ki thanh cong !");
-        return "redirect:/auth/login";
+//        model.addAttribute("status" , "Dang ki thanh cong !");
+        return "redirect:/auth/login?message=register_success";
     }
 
     @GetMapping("/403")

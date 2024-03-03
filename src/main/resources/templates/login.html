@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<div id="home-nav" th:replace="~{fragments/app-fragments::nav-default}">nav</div>
+<div id="home-nav" th:replace="~{fragments/header-fragments::header-default}">nav</div>
 <div id="home-main-content"
      class="row bg-light justify-content-center rounded py-4 mt-4 border border-primary rounded ">
     <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -23,7 +23,7 @@
 
             <div style="padding-top:30px" class="panel-body">
 
-                <div th:if="${messError}" th:text="${messError}"></div>
+                <div th:if="${message}" th:text="${message}"></div>
 
                 <!-- form login -->
                 <form autocomplete="off" class="form-horizontal" th:action="@{/j_spring_security_check}" method='POST'>
@@ -91,7 +91,7 @@
         </div>
     </div>
 </div>
-<div id="home-footer" th:replace="~{fragments/app-fragments::footer-default}">footer</div>
+<div id="home-footer" th:replace="~{fragments/footer-fragments::footer-default}">footer</div>
 </body>
 
 </html>

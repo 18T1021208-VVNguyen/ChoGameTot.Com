@@ -1,5 +1,6 @@
 package com.example.startappdemo.websocket.config;
 
+import com.example.startappdemo.websocket.interceptor.HttpHandShakeListGroupChat;
 import com.example.startappdemo.websocket.interceptor.HttpHandshakeChatRom;
 import com.example.startappdemo.websocket.interceptor.HttpHandshakeTrackingUserOn;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,15 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Autowired
     private HttpHandshakeTrackingUserOn httpHandshakeTrackingUserOn;
+
+    @Autowired
+    private HttpHandShakeListGroupChat httpHandShakeListGroupChat;
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry ) {
-        registry.addEndpoint("/ws" ).withSockJS().setInterceptors(handshakeInterceptorChatRom);
-        registry.addEndpoint("/tr").withSockJS().setInterceptors(httpHandshakeTrackingUserOn);
+//        registry.addEndpoint("/ws" ).withSockJS().setInterceptors(handshakeInterceptorChatRom);
+//        registry.addEndpoint("/tr").withSockJS().setInterceptors(httpHandshakeTrackingUserOn);
+
+        registry.addEndpoint("/ls").withSockJS().setInterceptors(httpHandShakeListGroupChat);
     }
 
     @Override

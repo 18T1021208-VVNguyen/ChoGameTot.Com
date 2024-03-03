@@ -30,17 +30,21 @@ $(document).ready(function(){
             console.log(e.target.scrollHeight)
     })
 
-    // let rowCount = 1;
-    //
-    // $('#textarea').on("input", (e)=>{
-    //         if(temp !== e.target.scrollHeight && rowCount < 6){
-    //             rowCount ++ ;
-    //         }
-    //         if(e.target.value == ''){
-    //             rowCount = 1;
-    //         }
-    //
-    //     $('#textarea').attr('rows', rowCount);
-    // })
-    // console.log($('.input-chat > textarea').width())
+    $('#open-box-account').click(()=>{
+        $('.box-account').removeClass('d-none')
+        $('.box-account').addClass('d-block')
+    })
+
+    $(document).click(function (e)
+    {
+        // Đối tượng container chứa popup
+        var container = $("#open-box-account");
+        // Nếu click bên ngoài đối tượng container thì ẩn nó đi
+        if (!container.is(e.target) && container.has(e.target).length === 0)
+        {
+            $('.box-account').addClass('d-none')
+            $('.box-account').removeClass('d-block')
+        }
+    });
+
 });
