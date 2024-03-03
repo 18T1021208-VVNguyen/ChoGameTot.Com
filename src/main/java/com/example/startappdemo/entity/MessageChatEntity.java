@@ -18,13 +18,6 @@ public class MessageChatEntity extends  BaseEntity{
     @NotBlank
     private String contentMessage;
 
-    @Column(name = "first_message")
-    @NotBlank
-    private String firstMessage;
-
-    @Column(name = "first_date")
-    @NotNull
-    private Timestamp firstDate;
 
     @Column(name = "number_message")
     @NotNull
