@@ -3,6 +3,7 @@ package com.example.startappdemo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 
@@ -22,10 +23,10 @@ public class UserOnlineEntity extends  BaseEntity{
     private UserEntity user;
 
     @Column(name = "timeConnect")
-    private Date timeConnect;
+    private Timestamp timeConnect;
 
     @Column( name = "timeDisconnect")
-    private Date timeDisconnect;
+    private Timestamp timeDisconnect;
 
     @Column( name = "ip_address")
     private String ip;

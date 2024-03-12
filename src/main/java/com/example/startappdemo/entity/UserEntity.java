@@ -12,7 +12,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-//@Transactional
 @Getter
 @Setter
 @Entity
@@ -59,6 +58,12 @@ public class UserEntity extends  BaseEntity {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "userSender")
     private Set<SenderReceiverEntity> userSender = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userEntity")
+    private Set<UserFollowEntity> userEntity = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userFollow")
+    private Set<UserFollowEntity> userEntityFollow = new HashSet<>();
 
 
 

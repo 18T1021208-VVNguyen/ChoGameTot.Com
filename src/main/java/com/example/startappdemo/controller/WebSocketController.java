@@ -14,8 +14,10 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Optional;
+import java.util.UUID;
 
 @Controller
 public class WebSocketController {
@@ -48,15 +50,15 @@ public class WebSocketController {
         UserOnlineEntity userOnlineEntity = null;
         if(userOnline.isPresent()){
             userOnlineEntity = userOnline.get();
-            userOnlineEntity.setTimeConnect(new Date());
+            userOnlineEntity.setTimeConnect(new Timestamp(System.currentTimeMillis()));
             userOnlineEntity.setTimeDisconnect(null);
         }
         else {
-            UserEntity userEntity =  userRepository.findById(Long.valueOf(userID))
+            UserEntity userEntity =  userRepository.findById(UUID.fromString(userID))
                     .orElseThrow( () -> new RuntimeException("Error: userID not found: " + userID));
             userOnlineEntity = UserOnlineEntity.builder()
                     .user(userEntity)
-                    .timeConnect(new Date())
+                    .timeConnect(new Timestamp(System.currentTimeMillis()))
                     .timeDisconnect(null)
                     .build();
         }

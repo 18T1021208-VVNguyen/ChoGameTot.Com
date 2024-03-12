@@ -6,8 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface GroupChatRepository  extends JpaRepository<GroupChatEntity,Long> {
+public interface GroupChatRepository  extends JpaRepository<GroupChatEntity, UUID> {
 
     @Query("""
             SELECT G FROM GroupChatEntity AS G 
@@ -16,5 +17,5 @@ public interface GroupChatRepository  extends JpaRepository<GroupChatEntity,Long
                   OR  SR.userSender.id = :userId and SR.senderIsDelete is false 
             order by G.firstDate DESC 
             """)
-    List<GroupChatEntity> getListGroupChat(Long userId);
+    List<GroupChatEntity> getListGroupChat(UUID userId);
 }

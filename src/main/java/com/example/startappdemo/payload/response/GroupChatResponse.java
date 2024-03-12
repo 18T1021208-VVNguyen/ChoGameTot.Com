@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -14,7 +15,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class GroupChatResponse {
 
-    private Long id;
+    private UUID id;
 
     private String name;
 
@@ -33,6 +34,7 @@ public class GroupChatResponse {
     private Boolean isReceiver;
 
     private Boolean isSeen;
+    private Boolean isOnline;
 
 
 }

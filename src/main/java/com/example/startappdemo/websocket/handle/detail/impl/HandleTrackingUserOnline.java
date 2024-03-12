@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class HandleTrackingUserOnline  implements HandleWebSocketConnectDisconnectDetail {
 
@@ -37,7 +37,7 @@ public class HandleTrackingUserOnline  implements HandleWebSocketConnectDisconne
             UserOnlineEntity userOnlineEntity =  userOnlineRepository.findByUser(userID)
                     .orElseThrow(() -> new RuntimeException("Error: userID not found: " + userID));
 
-            userOnlineEntity.setTimeDisconnect(new Date());
+            userOnlineEntity.setTimeDisconnect(new Timestamp(System.currentTimeMillis()));
 
             userOnlineRepository.save(userOnlineEntity);
 

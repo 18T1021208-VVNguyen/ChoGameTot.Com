@@ -8,10 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.Optional;
+import java.util.UUID;
 
 
-
-public interface  UserRepository  extends JpaRepository<UserEntity,Long> {
+public interface  UserRepository  extends JpaRepository<UserEntity, UUID> {
 
 
     Boolean existsByUserName(String username);

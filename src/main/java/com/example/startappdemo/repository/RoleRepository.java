@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 
-public interface RoleRepository  extends JpaRepository<RoleEntity,Long> {
+public interface RoleRepository  extends JpaRepository<RoleEntity, UUID> {
     Optional<RoleEntity> findByRoleName(String roleName);
 
 

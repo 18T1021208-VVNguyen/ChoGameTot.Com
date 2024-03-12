@@ -25,7 +25,7 @@ public class GroupChatServiceImpl implements GroupChatService {
 
     @Transactional
     @Override
-    public Map<String, Object> getListGroupChat(Long userId) {
+    public Map<String, Object> getListGroupChat(UUID userId) {
         List<SenderReceiverEntity> senderReceiverEntityList = senderReceiverResponse.getListSenderReceiverByUserId(userId);
         List<GroupChatEntity> groupChatEntityList = groupChatRepository.getListGroupChat(userId);
         List<GroupChatResponse> groupChatResponseList = new ArrayList<>();
@@ -44,10 +44,10 @@ public class GroupChatServiceImpl implements GroupChatService {
             if(e.getTypeGroup().byteValue() == 1){
 
                 SenderReceiverEntity entitySenderReceiver = senderReceiverEntityList.stream().filter(
-                        item-> item.getGroupChatEntity().getId().longValue() == e.getId().longValue()
+                        item-> item.getGroupChatEntity().getId().toString().equals(e.getId().toString())
                 ).findFirst().orElseThrow(() -> new UsernameNotFoundException("groupChatEntity Not Found : " +  e.getId() ));
 //                la nguoi gui
-                if( entitySenderReceiver.getUserSender().getId().longValue() == userId.longValue()){
+                if( entitySenderReceiver.getUserSender().getId().toString().equals( userId.toString()) ){
                     groupChatResponseBuilder.avatar(entitySenderReceiver.getUserSender().getAvatar())
                             .name(entitySenderReceiver.getUserSender().getUserName())
                             .isSender(true);
@@ -64,8 +64,6 @@ public class GroupChatServiceImpl implements GroupChatService {
 
             if(!e.getIsSeen() )
                 countNotSeen++;
-
-
         }
 
         Map<String, Object> result = new HashMap<>();
@@ -76,6 +74,6 @@ public class GroupChatServiceImpl implements GroupChatService {
 
     public static void main(String[] args) {
         GroupChatServiceImpl groupChatService = new GroupChatServiceImpl();
-        groupChatService.getListGroupChat(12L);
+//        groupChatService.getListGroupChat(12L);
     }
 }

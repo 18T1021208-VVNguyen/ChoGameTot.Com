@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
-public interface UserRoleRepository  extends JpaRepository<UserRoleEntity,Long> {
+public interface UserRoleRepository  extends JpaRepository<UserRoleEntity, UUID> {
         Set<UserRoleEntity> findAllByUser(UserEntity user);
 
 }
