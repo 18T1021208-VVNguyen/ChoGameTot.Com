@@ -1,10 +1,11 @@
 $(document).ready(function(){
-
+//===========================================================================
+    // open mo tin nhan
     $('#open-box-message').click(()=>{
         $('.header-btn-box-message').removeClass('d-none')
         $('.header-btn-box-message').addClass('d-block')
     })
-
+// close mo tin nhan
     $(document).click(function (e)
     {
         // Đối tượng container chứa popup
@@ -16,20 +17,21 @@ $(document).ready(function(){
             $('.header-btn-box-message').removeClass('d-block')
         }
     });
+//===========================================================================
+    let temp =  $('#input-texta').prop('scrollHeight');
 
-    let temp =  $('#textarea').prop('scrollHeight');
 
-
-    $('#textarea').on("input",(e)=>{
+    $('#input-texta').on("input",(e)=>{
            // console.log(e.target.scrollHeight);
             if(e.target.value === ''){
-                $('#textarea').css({ height:35+'px'})
+                $('#input-texta').css({ height:35+'px'})
             }
-             $('#textarea').css({ height: 'auto' } )
-             $('#textarea').css({ height: e.target.scrollHeight+'px' } )
+             $('#input-texta').css({ height: 'auto' } )
+             $('#input-texta').css({ height: e.target.scrollHeight+'px' } )
             console.log(e.target.scrollHeight)
     })
 
+//===========================================================================
     $('#open-box-account').click(()=>{
         $('.box-account').removeClass('d-none')
         $('.box-account').addClass('d-block')
@@ -46,5 +48,5 @@ $(document).ready(function(){
             $('.box-account').removeClass('d-block')
         }
     });
-
+//===========================================================================
 });

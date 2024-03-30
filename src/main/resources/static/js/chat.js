@@ -1,13 +1,7 @@
 jQuery(document).ready(function() {
 
-    $(".chat-list a").click(function() {
-        $(".chatbox").addClass('showbox');
-        return false;
-    });
+    var idUser = $("#id-user").val();
 
-    $(".chat-icon").click(function() {
-        $(".chatbox").removeClass('showbox');
-    });
 
 
 });

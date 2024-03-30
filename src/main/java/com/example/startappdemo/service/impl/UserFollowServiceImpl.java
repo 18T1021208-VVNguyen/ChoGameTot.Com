@@ -42,9 +42,9 @@ public class UserFollowServiceImpl implements UserFollowService {
          List<SenderReceiverEntity> receiverEntities = senderReceiverResponse.getListSenderReceiverByUserFollow(userId,userFollowsId);
          for(UserFollowResponse ele : senderResponses){
              SenderReceiverEntity check =   receiverEntities.stream().filter(item ->
-                  item.getUserSender().getId().toString().equals(ele.getUserFollow().toString())
+                  item.getUserSender().getId().toString().equals(ele.getUserFollowId().toString())
                          && item.getUserReceiver().getId().toString().equals(userId.toString())
-                     || item.getUserReceiver().getId().toString().equals(ele.getUserFollow().toString())
+                     || item.getUserReceiver().getId().toString().equals(ele.getUserFollowId().toString())
                      && item.getUserSender().getId().toString().equals(userId.toString())
              ).findFirst().orElse(null);
 

@@ -12,15 +12,16 @@ public interface SenderReceiverResponse extends JpaRepository<SenderReceiverEnti
 
     @Query("""
         SELECT SR FROM SenderReceiverEntity  as SR
-        WHERE SR.userReceiver.id = :userId and SR.receiverIsDelete is false 
-                  OR  SR.userSender.id = :userId and SR.senderIsDelete is false  
+        WHERE SR.userReceiver.id = :userId and SR.receiverIsDelete = false 
+                  OR  SR.userSender.id = :userId and SR.senderIsDelete = false  
 """)
     List<SenderReceiverEntity> getListSenderReceiverByUserId(UUID userId);
 
+    /*Get Group chat giua user flows va user id*/
     @Query("""
                 SELECT SR FROM SenderReceiverEntity  as SR
-        WHERE SR.userReceiver.id = :userId and SR.receiverIsDelete is false AND SR.userSender.id IN :userFollowId
-               OR  SR.userSender.id = :userId and SR.senderIsDelete is false  AND SR.userReceiver.id IN :userFollowId
+        WHERE SR.userReceiver.id = :userId and SR.receiverIsDelete = false AND SR.userSender.id IN :userFollowId
+               OR  SR.userSender.id = :userId and SR.senderIsDelete = false  AND SR.userReceiver.id IN :userFollowId
 """)
     List<SenderReceiverEntity> getListSenderReceiverByUserFollow(UUID userId , List<UUID> userFollowId);
 }

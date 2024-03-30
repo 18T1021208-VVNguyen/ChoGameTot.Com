@@ -233,6 +233,7 @@
 <!--                  Khi da login-->
                     <div class="" sec:authorize="isAuthenticated()">
                         <p  th:text ="${#authentication.getPrincipal().getUsername()}"></p>
+                        <input type="hidden" id="id-user" th:value="${#authentication.getPrincipal().getId}"/>
                         <hr/>
                         <div class="profile-flows">
                             <button class="btn btn-light btn-sm">0 Nguoi theo doi</button>

@@ -210,7 +210,7 @@ p{
 }
 
 
-.box-message-input-chat  .input-chat > #textarea{
+.box-message-input-chat  .input-chat > #input-texta{
     height: 35px;
     width: 100%;
     border-radius: 5px;
