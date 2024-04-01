@@ -8,7 +8,7 @@ jQuery(document).ready(function() {
         if(userID == null || userID === '') return;
 
 
-        let socket = new SockJS('http://localhost:8080/tr');
+        let socket = new SockJS('http://localhost:8080/tr',null, {transports:'websocket'});
         stompClient = Stomp.over(socket);
         stompClient.connect({}, onConnected, onError);
 
