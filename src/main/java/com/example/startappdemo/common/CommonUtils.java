@@ -1,5 +1,6 @@
 package com.example.startappdemo.common;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public class CommonUtils {
@@ -16,4 +17,19 @@ public class CommonUtils {
             "WL-Proxy-Client-IP",
             "REMOTE_ADDR"
     );
+
+    public static int disconnectionInterval = 3;
+
+    public static Boolean getIsOnline(Timestamp timeDisconect){
+
+        if(timeDisconect == null){
+            return true;
+        }
+//        Long time =   timeDisconect.getTime();
+//        Long timeNow = new Timestamp(System.currentTimeMillis()).getTime();
+//        if(Math.abs(timeNow - time) / 1000  <= disconnectionInterval){
+//            return true;
+//        }
+        return false;
+    }
 }

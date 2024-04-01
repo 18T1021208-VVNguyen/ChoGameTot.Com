@@ -16,7 +16,7 @@ public interface UserOnlineRepository extends JpaRepository<UserOnlineEntity, UU
 
         @Query("SELECT t FROM  UserOnlineEntity  AS t " +
                 "WHERE  t.user.id = ?1 ")
-        Optional<UserOnlineEntity> findByUser(Long userID);
+        Optional<UserOnlineEntity> findByUser(UUID userID);
 
 //        timeDisconnect is null , hoac , khoang thoi gian hien tai , den thoi gian disconec <=1 giay thi no dang online
         @Query("SELECT u FROM UserOnlineEntity as u WHERE u.timeDisconnect is null OR TIMESTAMPDIFF(SECOND , u.timeDisconnect ,NOW())  <= ?1 ")

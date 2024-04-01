@@ -27,9 +27,9 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry ) {
 //        registry.addEndpoint("/ws" ).withSockJS().setInterceptors(handshakeInterceptorChatRom);
-//        registry.addEndpoint("/tr").withSockJS().setInterceptors(httpHandshakeTrackingUserOn);
+        registry.addEndpoint("/tr").withSockJS().setInterceptors(httpHandshakeTrackingUserOn);
 
-        registry.addEndpoint("/ls").withSockJS().setInterceptors(httpHandShakeListGroupChat);
+//        registry.addEndpoint("/ls").withSockJS().setInterceptors(httpHandShakeListGroupChat);
     }
 
     @Override

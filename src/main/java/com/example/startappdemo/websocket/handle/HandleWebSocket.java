@@ -45,7 +45,7 @@ public class HandleWebSocket {
                 this.handleWebSocketConnectDisconnectDetail = new HandleChatRom(headerAccessorInput , messagingTemplateOutPut);
                 break;
             case 1 :
-                this.handleWebSocketConnectDisconnectDetail = new HandleTrackingUserOnline (this.headerAccessorInput , this.applicationContext);
+                this.handleWebSocketConnectDisconnectDetail = new HandleTrackingUserOnline (this.headerAccessorInput , this.applicationContext , messagingTemplateOutPut);
                 break;
             default:
                 break;

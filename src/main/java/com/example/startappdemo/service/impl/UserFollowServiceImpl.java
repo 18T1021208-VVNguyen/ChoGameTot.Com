@@ -1,5 +1,6 @@
 package com.example.startappdemo.service.impl;
 
+import com.example.startappdemo.common.CommonUtils;
 import com.example.startappdemo.entity.SenderReceiverEntity;
 import com.example.startappdemo.payload.response.UserFollowResponse;
 import com.example.startappdemo.repository.SenderReceiverResponse;
@@ -35,7 +36,7 @@ public class UserFollowServiceImpl implements UserFollowService {
         List<UUID> userFollowsId = new ArrayList<>();
         for(Tuple item : tuples){
             senderResponses.add(new UserFollowResponse(item.get(0, UUID.class) ,item.get(1, UUID.class) ,
-                    item.get(2,String.class), this.getIsOnline(item.get(3,Timestamp.class)) ));
+                    item.get(2,String.class), CommonUtils.getIsOnline(item.get(3,Timestamp.class)) ));
             userFollowsId.add(item.get(1, UUID.class));
         }
 
@@ -61,18 +62,6 @@ public class UserFollowServiceImpl implements UserFollowService {
          return senderResponses;
     }
 
-    private Boolean getIsOnline(Timestamp timeDisconect){
-
-        if(timeDisconect == null){
-            return false;
-        }
-        Long time =   timeDisconect.getTime();
-        Long timeNow = new Timestamp(System.currentTimeMillis()).getTime();
-        if(Math.abs(timeNow - time) / 1000  <= 5){
-                return true;
-        }
-        return false;
-    }
 
     public static void main(String[] args) {
 //        UserFollowServiceImpl test = new UserFollowServiceImpl();

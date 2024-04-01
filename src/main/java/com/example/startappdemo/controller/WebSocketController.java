@@ -12,6 +12,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
+import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Controller;
 
 import java.sql.Timestamp;
@@ -27,6 +28,10 @@ public class WebSocketController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private SimpMessageSendingOperations messagingTemplate;
+
     @MessageMapping("/chat.sendMessage")
     @SendTo("/topic/publicChatRoom")
     public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
@@ -45,8 +50,8 @@ public class WebSocketController {
 
     @MessageMapping("/tracking.userOnline")
     public  void trackingUserOnline(@Payload String userID , SimpMessageHeaderAccessor headerAccessor ){
-        headerAccessor.getSessionAttributes().put("userID", Long.valueOf(userID));
-        Optional<UserOnlineEntity> userOnline =  userOnlineRepository.findByUser(Long.valueOf(userID));
+        headerAccessor.getSessionAttributes().put("userID", userID);
+        Optional<UserOnlineEntity> userOnline =  userOnlineRepository.findByUser(UUID.fromString( userID));
         UserOnlineEntity userOnlineEntity = null;
         if(userOnline.isPresent()){
             userOnlineEntity = userOnline.get();
@@ -62,7 +67,7 @@ public class WebSocketController {
                     .timeDisconnect(null)
                     .build();
         }
-
         userOnlineRepository.save(userOnlineEntity);
+        messagingTemplate.convertAndSend("/topic/checkOnline/"+userID, true);
     }
 }

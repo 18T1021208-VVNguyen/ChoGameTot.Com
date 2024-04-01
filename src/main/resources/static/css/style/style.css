@@ -27,6 +27,12 @@ p{
     position: relative;
 }
 /*====================================================================*/
+
+/** user flow/ */
+
+.user-flow{
+
+}
 /*box message*/
 .header-btn-box-message{
     position: absolute;
@@ -40,8 +46,15 @@ p{
     cursor: default;
     max-height: 666px;
     overflow-y: auto;
-
 }
+
+.box-message-chat-item  > .avatar > img  {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 
 
 .box-message-hed{
@@ -109,20 +122,14 @@ p{
     border-radius: 8px;
 }
 
-.box-message-chat-item > .avatar > img {
-
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    object-fit: cover;
-}
 
 .box-message-chat-item > .avatar{
     position: relative;
 }
 .box-message-chat-item > .avatar > i {
     position: absolute;
-    color: #00FF00;
+    /*color: #00FF00;*/
+    color: #6c757d;
     font-size: 13px;
     bottom: 5px;
     right: 6px;
