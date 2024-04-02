@@ -1,36 +1,41 @@
 package com.example.startappdemo.websocket.config;
 
-import com.example.startappdemo.websocket.interceptor.HttpHandShakeListGroupChat;
 import com.example.startappdemo.websocket.interceptor.HttpHandshakeChatRom;
-import com.example.startappdemo.websocket.interceptor.HttpHandshakeTrackingUserOn;
+import com.example.startappdemo.websocket.interceptor.HttpHandshakeFollowUserOnOff;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletRegistrationBean;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
-import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
-import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
-import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.web.socket.WebSocketHandler;
+import org.springframework.web.socket.config.annotation.*;
+import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
+
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
 
 @Configuration
 @EnableWebSocketMessageBroker
-public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer , WebSocketConfigurer {
 
     @Autowired
     private HttpHandshakeChatRom handshakeInterceptorChatRom;
 
     @Autowired
-    private HttpHandshakeTrackingUserOn httpHandshakeTrackingUserOn;
+    private HttpHandshakeFollowUserOnOff httpHandshakeFollowUserOn;
 
-    @Autowired
-    private HttpHandShakeListGroupChat httpHandShakeListGroupChat;
+//    @Autowired
+//    private HttpHandShakeListGroupChat httpHandShakeListGroupChat;
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry ) {
 //        registry.addEndpoint("/ws" ).withSockJS().setInterceptors(handshakeInterceptorChatRom);
-        registry.addEndpoint("/tr").withSockJS().setInterceptors(httpHandshakeTrackingUserOn);
+       registry.addEndpoint("/gs-guide-websocket")
+               .setHandshakeHandler(defaultHandshakeHandler())
+               .addInterceptors(httpHandshakeFollowUserOn);
+//        registry.addEndpoint("/tr-guide-websocket").setHandshakeHandler()
 
 //        registry.addEndpoint("/ls").withSockJS().setInterceptors(httpHandShakeListGroupChat);
     }
@@ -41,6 +46,21 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         registry.setApplicationDestinationPrefixes("/app");
 //        chu de clien nhan , clien da dk thi se nhan
         registry.enableSimpleBroker("/topic");
+    }
+
+    private DefaultHandshakeHandler defaultHandshakeHandler(){
+        return new DefaultHandshakeHandler(){
+            @Override
+            protected Principal determineUser(ServerHttpRequest request, WebSocketHandler wsHandler, Map<String, Object> attributes) {
+                Principal principal = request.getPrincipal();
+                if(principal == null){
+                    Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+                    authorities.add(new SimpleGrantedAuthority("ANONYMOUS"));
+                    principal = new AnonymousAuthenticationToken("WebsocketConfiguration","aaaa",authorities);
+                }
+                return principal;
+            }
+        };
     }
 
 }

@@ -67,6 +67,7 @@ public class WebSocketController {
                     .timeDisconnect(null)
                     .build();
         }
+        logger.info("Send user follow " + userID);
         userOnlineRepository.save(userOnlineEntity);
         messagingTemplate.convertAndSend("/topic/checkOnline/"+userID, true);
     }

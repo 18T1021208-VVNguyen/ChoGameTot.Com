@@ -33,7 +33,7 @@ public class HandleChatRom  implements HandleWebSocketConnectDisconnectDetail {
             chatMessage.setType(ChatMessage.MessageType.LEAVE);
             chatMessage.setSender(username);
             messagingTemplate.convertAndSend("/topic/publicChatRoom", chatMessage);
-            headerAccessor.getSessionAttributes().remove("chatRom");
+//            headerAccessor.getSessionAttributes().remove("chatRom");
         }
     }
 

@@ -17,8 +17,8 @@ public class HttpHandshakeChatRom implements HandshakeInterceptor {
     @Override
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
         logger.info("Call beforeHandshake Chat Rom");
-        String simpSessionID =  Utils.findSimpSessionId(request.getURI().getPath());
-        attributes.put(Utils.SIMP_SESSION_ID_CHAT_ROM,simpSessionID);
+//        String simpSessionID =  Utils.findSimpSessionId(request.getURI().getPath());
+//        attributes.put(Utils.KEY_HANDLE_WEBSOCKET_DISCONNECT,Utils.VALUE_FOLLOW_USER_ON_OFF);
         return true;
     }
 
