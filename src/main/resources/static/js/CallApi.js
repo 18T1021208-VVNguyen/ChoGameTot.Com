@@ -1,6 +1,10 @@
 
 
 export function  getUserFlows(userId){
+    if(message!=null){
+        message.unsubscribe();
+        console.log("has subrice");
+    }
     return {
         type: 'GET',
         url: '/user-follow',
@@ -18,7 +22,7 @@ export function  getUserFlows(userId){
                                 <div class="box-message-chat-item">
                 <div class="avatar">
                     <img src="${window.location.origin}/images/avatar/noImg.jpg">
-                    <i id="user-flow-on-off" class="fa-solid fa-circle" ${e.isOnline ? 'style="color: #00FF00"' : ''}></i>
+                    <i id="user-flow-on-off-${e.userFollowId}" class="fa-solid fa-circle" ${e.isOnline ? 'style="color: #00FF00"' : ''}></i>
                 </div>
                 <div class="chatbox">
                     <span class="chatbox-name">${e.name}</span>
@@ -30,9 +34,9 @@ export function  getUserFlows(userId){
                     var isOnline = JSON.parse(payload.body);
 
                     if(isOnline){
-                        $("#user-flow-on-off").css({ 'color': '#00FF00'})
+                        $(`#user-flow-on-off-${e.userFollowId}`).css({ 'color': '#00FF00'})
                     }else {
-                        $("#user-flow-on-off").css({ 'color': '#6c757d'} )
+                        $(`#user-flow-on-off-${e.userFollowId}`).css({ 'color': '#6c757d'} )
                         console.log("online : "+ isOnline);
                     }
 

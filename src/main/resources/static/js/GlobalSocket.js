@@ -1,4 +1,5 @@
 var checkOnline = null;
+var message = null;
 $(document).ready(function() {
 
     // filter user not login
@@ -70,10 +71,8 @@ $(document).ready(function() {
 //         connect();
 //     }
 
-    var message = null;
+
     checkOnline = (userId , callBack) =>{
-        if(message != null)
-            message.unsubscribe();
         message = stompClient.subscribe(`/topic/checkOnline/${userId}`,callBack  )
     }
 

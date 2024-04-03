@@ -11,6 +11,7 @@ $(document).ready(function() {
         $('#user-flows').removeClass('btn-light');
         $('#user-flows').addClass('btn-primary')
         $('.box-message-chat').empty();
+
         $.ajax(getUserFlows(idUser))
     })
 

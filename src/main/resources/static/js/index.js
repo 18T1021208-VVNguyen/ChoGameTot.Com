@@ -15,6 +15,7 @@ $(document).ready(function(){
         {
             $('.header-btn-box-message').addClass('d-none')
             $('.header-btn-box-message').removeClass('d-block')
+
         }
     });
 //===========================================================================
@@ -32,6 +33,7 @@ $(document).ready(function(){
     })
 
 //===========================================================================
+    // open box account
     $('#open-box-account').click(()=>{
         $('.box-account').removeClass('d-none')
         $('.box-account').addClass('d-block')
