@@ -1,49 +1,44 @@
 var checkOnline = null;
-jQuery(document).ready(function() {
+$(document).ready(function() {
 
-    // var stompClient = null;
-    var userID = null;
-    // var stompClient = null;
+    // filter user not login
+    var userID = $("#id-user").val();
+    if(userID === undefined || userID == null || userID === "") {
+        console.log("user is null");
+        return ;
+    }
 
+
+    console.log("user is login ");
     const stompClient = new StompJs.Client({
         brokerURL: 'ws://localhost:8080/gs-guide-websocket'
     });
 
     stompClient.onConnect = (frame) => {
-        // setConnected(true);
         console.log('Connected: ' + frame);
         sendTracking();
-
     };
 
     function sendTracking() {
-             userID = $("#id-user").val();
-             if(userID == null || userID === '') {
-                 disconnect();
-                 return ;
-             };
+        console.log("begin send ")
             stompClient.publish({
-                destination: "/app/tracking.userOnline",
-                body: userID
+                destination: "/app/tracking.userOnline"
         });
     }
 
     function connect() {
-        stompClient.activate();
+        console.log("connecting socket!")
+            stompClient.activate();
     }
 
     function disconnect() {
         stompClient.deactivate();
-        setConnected(false);
         console.log("Disconnected");
     }
 
     stompClient.onWebSocketError = (error) => {
         console.error('Error with websocket', error);
     };
-
-
-
     connect();
 //========================================================
 //
@@ -77,7 +72,6 @@ jQuery(document).ready(function() {
 
     var message = null;
     checkOnline = (userId , callBack) =>{
-        // console.log(stompClient);
         if(message != null)
             message.unsubscribe();
         message = stompClient.subscribe(`/topic/checkOnline/${userId}`,callBack  )

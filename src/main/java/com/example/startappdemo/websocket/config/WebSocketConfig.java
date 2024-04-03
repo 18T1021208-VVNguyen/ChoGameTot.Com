@@ -19,7 +19,7 @@ import java.util.Map;
 
 @Configuration
 @EnableWebSocketMessageBroker
-public class WebSocketConfig implements WebSocketMessageBrokerConfigurer , WebSocketConfigurer {
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer  {
 
     @Autowired
     private HttpHandshakeChatRom handshakeInterceptorChatRom;
@@ -27,17 +27,13 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer , WebSo
     @Autowired
     private HttpHandshakeFollowUserOnOff httpHandshakeFollowUserOn;
 
-//    @Autowired
-//    private HttpHandShakeListGroupChat httpHandShakeListGroupChat;
+
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry ) {
-//        registry.addEndpoint("/ws" ).withSockJS().setInterceptors(handshakeInterceptorChatRom);
+
        registry.addEndpoint("/gs-guide-websocket")
                .setHandshakeHandler(defaultHandshakeHandler())
                .addInterceptors(httpHandshakeFollowUserOn);
-//        registry.addEndpoint("/tr-guide-websocket").setHandshakeHandler()
-
-//        registry.addEndpoint("/ls").withSockJS().setInterceptors(httpHandShakeListGroupChat);
     }
 
     @Override

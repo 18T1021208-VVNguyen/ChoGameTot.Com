@@ -25,11 +25,6 @@ public class CommonUtils {
         if(timeDisconect == null){
             return true;
         }
-//        Long time =   timeDisconect.getTime();
-//        Long timeNow = new Timestamp(System.currentTimeMillis()).getTime();
-//        if(Math.abs(timeNow - time) / 1000  <= disconnectionInterval){
-//            return true;
-//        }
         return false;
     }
 }

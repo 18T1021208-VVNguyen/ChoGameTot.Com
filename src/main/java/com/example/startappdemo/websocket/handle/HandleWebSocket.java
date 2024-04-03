@@ -2,7 +2,6 @@ package com.example.startappdemo.websocket.handle;
 
 import com.example.startappdemo.websocket.common.Utils;
 import com.example.startappdemo.websocket.handle.detail.HandleWebSocketConnectDisconnectDetail;
-import com.example.startappdemo.websocket.handle.detail.impl.HandleChatRom;
 import com.example.startappdemo.websocket.handle.detail.impl.HandleFollowUserOnOff;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.ObjectUtils;
@@ -23,9 +22,9 @@ public class HandleWebSocket {
     private ApplicationContext applicationContext;
     private HandleWebSocketConnectDisconnectDetail handleWebSocketConnectDisconnectDetail;
 
-//    input
     private  StompHeaderAccessor headerAccessorInput;
 
+//    send to client
     @Autowired
     private SimpMessageSendingOperations messagingTemplateOutPut;
 
@@ -42,7 +41,6 @@ public class HandleWebSocket {
         Integer caseOption = Integer.valueOf(objectCase.toString());
         switch (caseOption){
             case 0 :
-                this.handleWebSocketConnectDisconnectDetail = new HandleChatRom(headerAccessorInput , messagingTemplateOutPut);
                 break;
             case 1 :
                 this.handleWebSocketConnectDisconnectDetail = new HandleFollowUserOnOff(this.headerAccessorInput , this.applicationContext , messagingTemplateOutPut);

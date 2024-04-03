@@ -18,16 +18,12 @@ public class WebSocketEventListener {
 
     private static final Logger logger = LoggerFactory.getLogger(WebSocketEventListener.class);
 
-
-
     @Autowired
     private HandleWebSocket handleWebSocket;
 
     @EventListener
     public void handleWebSocketConnectListener(SessionConnectedEvent event) {
         logger.info("Received a new web socket connection");
-        StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
-        handleWebSocket.init(headerAccessor);
 
     }
 
@@ -35,10 +31,8 @@ public class WebSocketEventListener {
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
 
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
-
         logger.info( "session ID Disconnet: " + headerAccessor.getSessionId());
-//
-
+        handleWebSocket.init(headerAccessor);
         handleWebSocket.handleDisconnect();
 
     }

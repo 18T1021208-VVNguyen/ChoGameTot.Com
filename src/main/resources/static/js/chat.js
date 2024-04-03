@@ -1,5 +1,5 @@
 import {getUserFlows} from './CallApi.js'
-jQuery(document).ready(function() {
+$(document).ready(function() {
     // =Chuc Nang Click vao User Follow ==================
 
     $("#user-flows").on("click",()=>{
@@ -26,7 +26,6 @@ jQuery(document).ready(function() {
         $('.box-message-chat').empty();
 
     })
-
 
 
 });

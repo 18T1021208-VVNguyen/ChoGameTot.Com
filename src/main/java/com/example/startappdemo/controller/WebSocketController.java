@@ -5,6 +5,8 @@ import com.example.startappdemo.entity.UserOnlineEntity;
 import com.example.startappdemo.model.ChatMessage;
 import com.example.startappdemo.repository.UserOnlineRepository;
 import com.example.startappdemo.repository.UserRepository;
+import com.example.startappdemo.security.service.impl.UserDetailsImpl;
+import com.example.startappdemo.websocket.common.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +15,10 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 
+import java.security.Principal;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Optional;
@@ -49,9 +53,12 @@ public class WebSocketController {
 
 
     @MessageMapping("/tracking.userOnline")
-    public  void trackingUserOnline(@Payload String userID , SimpMessageHeaderAccessor headerAccessor ){
-        headerAccessor.getSessionAttributes().put("userID", userID);
-        Optional<UserOnlineEntity> userOnline =  userOnlineRepository.findByUser(UUID.fromString( userID));
+    public  void trackingUserOnline(Principal principal, SimpMessageHeaderAccessor headerAccessor ){
+//        UserDetailsImpl u =  (UserDetailsImpl) ((Authentication) principal).getPrincipal();
+//        UUID userID = u.getId();
+//        headerAccessor.getSessionAttributes().put(Utils.USER_ID, userID);
+        String userID = headerAccessor.getSessionAttributes().get(Utils.USER_ID).toString();
+        Optional<UserOnlineEntity> userOnline =  userOnlineRepository.findByUser( UUID.fromString(userID));
         UserOnlineEntity userOnlineEntity = null;
         if(userOnline.isPresent()){
             userOnlineEntity = userOnline.get();
