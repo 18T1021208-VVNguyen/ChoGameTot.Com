@@ -1,5 +1,5 @@
 var checkOnline = null;
-var message = null;
+var  stompClient = null;
 $(document).ready(function() {
 
     // filter user not login
@@ -11,9 +11,12 @@ $(document).ready(function() {
 
 
     console.log("user is login ");
-    const stompClient = new StompJs.Client({
-        brokerURL: 'ws://localhost:8080/gs-guide-websocket'
-    });
+    if(stompClient == null){
+        stompClient = new StompJs.Client({
+            brokerURL: 'ws://localhost:8080/gs-guide-websocket'
+        });
+    }
+
 
     stompClient.onConnect = (frame) => {
         console.log('Connected: ' + frame);
@@ -73,7 +76,7 @@ $(document).ready(function() {
 
 
     checkOnline = (userId , callBack) =>{
-        message = stompClient.subscribe(`/topic/checkOnline/${userId}`,callBack  )
+        stompClient.subscribe(`/topic/checkOnline/${userId}`,callBack , {id: "myTopicId"}  )
     }
 
 })

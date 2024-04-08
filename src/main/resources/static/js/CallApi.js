@@ -1,9 +1,9 @@
 
 
 export function  getUserFlows(userId){
-    if(message!=null){
-        message.unsubscribe();
-        console.log("has subrice");
+    if(stompClient!=null){
+        stompClient.unsubscribe("myTopicId");
+        console.log("unsubscribe myTopicId ");
     }
     return {
         type: 'GET',
@@ -37,9 +37,8 @@ export function  getUserFlows(userId){
                         $(`#user-flow-on-off-${e.userFollowId}`).css({ 'color': '#00FF00'})
                     }else {
                         $(`#user-flow-on-off-${e.userFollowId}`).css({ 'color': '#6c757d'} )
-                        console.log("online : "+ isOnline);
                     }
-
+                    console.log("online : "+ isOnline);
                 })
             })
 
