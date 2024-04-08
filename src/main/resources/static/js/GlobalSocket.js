@@ -1,5 +1,6 @@
 var checkOnline = null;
 var  stompClient = null;
+// var message = null;
 $(document).ready(function() {
 
     // filter user not login
@@ -76,7 +77,8 @@ $(document).ready(function() {
 
 
     checkOnline = (userId , callBack) =>{
-        stompClient.subscribe(`/topic/checkOnline/${userId}`,callBack , {id: "myTopicId"}  )
+        let message  =  stompClient.subscribe(`/topic/checkOnline/${userId}`,callBack   )
+        return message;
     }
 
 })

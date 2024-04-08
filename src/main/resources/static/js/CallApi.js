@@ -1,9 +1,12 @@
-
+let arrayMessageSub = [];
 
 export function  getUserFlows(userId){
-    if(stompClient!=null){
-        stompClient.unsubscribe("myTopicId");
-        console.log("unsubscribe myTopicId ");
+    if(arrayMessageSub.length > 0){
+        arrayMessageSub.forEach( (ele,index) =>{
+            ele.unsubscribe();
+        })
+
+        console.log("has subrice");
     }
     return {
         type: 'GET',
@@ -30,7 +33,7 @@ export function  getUserFlows(userId){
                 </div>
             </div>
                 `)
-                checkOnline(e.userFollowId , (payload)=>{
+                let message =  checkOnline(e.userFollowId , (payload)=>{
                     var isOnline = JSON.parse(payload.body);
 
                     if(isOnline){
@@ -39,7 +42,10 @@ export function  getUserFlows(userId){
                         $(`#user-flow-on-off-${e.userFollowId}`).css({ 'color': '#6c757d'} )
                     }
                     console.log("online : "+ isOnline);
+
                 })
+
+                arrayMessageSub.push(message);
             })
 
         }
