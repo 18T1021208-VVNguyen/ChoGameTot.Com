@@ -5,7 +5,7 @@ export function  getUserFlows(userId){
         arrayMessageSub.forEach( (ele,index) =>{
             ele.unsubscribe();
         })
-
+        arrayMessageSub = [];
         console.log("has subrice");
     }
     return {
